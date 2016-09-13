@@ -7,8 +7,10 @@
     "test": "jshint *.js"
   },
   "bin": {
-    "pier": "index.js"
+    "pier": "index.js",
+    "get-floodstate": "index-get-floodstate.js"
   },
+
   "author": "Tomas Holderness",
   "license": "GPL-3.0",
   "dependencies": {

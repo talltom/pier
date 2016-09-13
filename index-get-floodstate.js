@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 'use strict';
 // Libraries
 var program = require('commander');
