@@ -1,6 +1,6 @@
 Pier
 ====
-## Data analysis platform for [CogniCity](https://github.com/smart-facility/cognicity-server)
+#### Data analysis platform for [CogniCity](https://github.com/smart-facility/cognicity-server)
 
 ## Install
 ```sh
