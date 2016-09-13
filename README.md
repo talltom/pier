@@ -24,6 +24,7 @@ Get historical extents of flooding from the [Risk Evaluation Matrix](https://git
 
 ##### Parameters
 * Day must be specified as a ISO 8601 date [YYYY-MM-DD]
+* -e [optional] - explode time series into multiple attributes
 
 ##### Output
 * geojson feature collection representing polygons of all districts which experienced flooding on the specified day

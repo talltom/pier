@@ -20,8 +20,19 @@ var patch_timeseries = function(FeatureCollection){
   return FeatureCollection;
 };
 
+var explode_timeseries = function(FeatureCollection){
+  for (var i = 0; i < FeatureCollection.features.length; i++){
+    for (var j = 0; j < FeatureCollection.features[i].properties.flood_state.length; j++){
+      var ts = FeatureCollection.features[i].properties.flood_state[j].ts
+      FeatureCollection.features[i].properties[ts] = FeatureCollection.features[i].properties.flood_state[j].state
+    }
+  }
+  return FeatureCollection;
+}
+
 // Program options
 program
+  .option('-e, --explode', 'Explode time series into multiple attributes')
   .parse(process.argv);
 
 var date = program.args;
@@ -52,6 +63,10 @@ db.get_floodstate([start, end], function(err, res){
     console.log('[Database error] '+err);
     process.exit(1);
   }
-  console.log(JSON.stringify(patch_timeseries(res[0])));
+  var result = patch_timeseries(res[0]);
+  if (program.explode){
+    result = explode_timeseries(result);
+  }
+  console.log(JSON.stringify(result));
   process.exit(1);
 });
