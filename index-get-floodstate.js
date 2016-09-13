@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 // Libraries
-const program = require('commander');
-const Massive = require('massive');
-const moment = require('moment');
+var program = require('commander');
+var Massive = require('massive');
+var moment = require('moment');
 
 // Data process function
 var patch_timeseries = function(FeatureCollection){
@@ -13,18 +13,18 @@ var patch_timeseries = function(FeatureCollection){
     }
     for (var j = 1; j < FeatureCollection.features[i].properties.flood_state.length; j++){
       if (FeatureCollection.features[i].properties.flood_state[j].state === null){
-        FeatureCollection.features[i].properties.flood_state[j].state = FeatureCollection.features[i].properties.flood_state[j-1].state
+        FeatureCollection.features[i].properties.flood_state[j].state = FeatureCollection.features[i].properties.flood_state[j-1].state;
       }
     }
   }
   return FeatureCollection;
-}
+};
 
 // Program options
 program
   .parse(process.argv);
 
-var date = program.args
+var date = program.args;
 
 // Validate date input
 if (!date.length){
