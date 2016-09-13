@@ -1,0 +1,19 @@
+{
+  "name": "pier",
+  "version": "0.0.1",
+  "description": "Post-event data platform for CogniCity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "pier": "index.js"
+  },
+  "author": "Tomas Holderness",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "commander": "^2.9.0",
+    "massive": "^2.5.0",
+    "moment": "^2.15.0"
+  }
+}
