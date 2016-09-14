@@ -27,9 +27,6 @@ var patch_timeseries = function(FeatureCollection){
 var explode_timeseries = function(FeatureCollection){
   for (var i = 0; i < FeatureCollection.features.length; i++){
     for (var j = 0; j < FeatureCollection.features[i].properties.flood_state.length; j++){
-      if (FeatureCollection.features[i].properties.flood_state[j].state > 0){
-        console.log(FeatureCollection.features[i].properties.flood_state[j].state);
-      }
       var ts = FeatureCollection.features[i].properties.flood_state[j].ts;
       FeatureCollection.features[i].properties[ts] = FeatureCollection.features[i].properties.flood_state[j].state;
     }
