@@ -7,7 +7,7 @@
     "test": "jshint *.js"
   },
   "bin": {
-    "pier": "index.js",
+    "pier": "pier.js",
     "get-floodstate": "index-get-floodstate.js"
   },
 
