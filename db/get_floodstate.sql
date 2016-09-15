@@ -13,11 +13,11 @@ SELECT 'FeatureCollection' AS type,
                 as rw,
                 generate_series($1::timestamp, $2::timestamp, '1 hour') as ts
               ORDER BY ts.ts) as index
-            LEFT JOIN (SELECT c.ts_max, rem_status_log.state, c.rw
+            LEFT JOIN (SELECT c.ts_max AT TIME ZONE 'ICT' as ts_max, rem_status_log.state, c.rw
                 FROM (SELECT max(changed) as ts_max, rw
                   FROM rem_status_log
-                  WHERE changed >= $1 AND changed <= $2
-                  GROUP BY (rw)) as c,
+                  WHERE changed AT TIME ZONE 'ICT' >= $1 AND changed AT TIME ZONE 'ICT' <= $2
+                  GROUP BY (rw, date_trunc('hour', changed))) as c,
                   rem_status_log
                   WHERE c.ts_max = rem_status_log.changed
                   AND c.rw = rem_status_log.rw
