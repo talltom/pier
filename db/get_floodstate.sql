@@ -2,7 +2,7 @@ SELECT 'FeatureCollection' AS type,
         array_to_json(array_agg(f)) AS features
         FROM (
           SELECT 'Feature' AS type,
-          ST_AsGeoJSON(bd.the_geom)::json AS geometry,
+          ST_AsGeoJSON(ST_Transform(bd.the_geom, 32748))::json AS geometry,
           row_to_json(l) AS properties
           FROM (SELECT p.rw as rw, array_to_json(array_agg((ts, state)::_pier_flood_state_type)) as flood_state
             FROM (SELECT index.rw, index.ts, d.state

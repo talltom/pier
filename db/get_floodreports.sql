@@ -1,6 +1,6 @@
 SELECT 'FeatureCollection' AS type, array_to_json(array_agg(f)) AS features
 FROM (SELECT 'Feature' AS type,
-			ST_ASGeoJSON(lg.the_geom)::json AS geometry,
+			ST_ASGeoJSON(ST_Transform(lg.the_geom, 32748))::json AS geometry,
 				row_to_json(
 					(SELECT l FROM
 						(SELECT lg.pkey,
