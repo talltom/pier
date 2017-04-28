@@ -68,8 +68,8 @@ if (moment(date, "YYYY-MM-DD", true).isValid() !== true){
   process.exit(1);
 }
 // Create start and end date
-var start = date[0]+' 00:00';
-var end = date[0]+' 23:59';
+var start = date[0]+' 00:00+07';
+var end = date[0]+' 23:59+07';
 
 // Query
 var db = Massive.connectSync({db: "mapjakarta_rem_aug2016"});

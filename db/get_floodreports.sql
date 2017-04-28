@@ -14,7 +14,8 @@ FROM (SELECT 'Feature' AS type,
 					 AS l)
 				 ) AS properties
 				 FROM  all_reports  AS lg, jkt_rw_boundary as rw
-WHERE lg.created_at AT TIME ZONE 'ICT' >= $1::timestamp AT TIME ZONE 'ICT'
-	AND lg.created_at AT TIME ZONE 'ICT' <= $2::timestamp AT TIME ZONE 'ICT'
+WHERE lg.created_at >= $1::timestamp WITH TIME ZONE
+	AND lg.created_at <= $2::timestamp WITH TIME ZONE
 	AND ST_Within(lg.the_geom, rw.the_geom)
 ) AS f ;
+--SELECT $1::timestamp WITH TIME ZONE, $2::timestamp WITH TIME ZONE;
